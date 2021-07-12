@@ -8,7 +8,7 @@
     "postbuild": "node postbuild.js"
   },
   "repository": {
-    "url": "https://github.com/ALLAPE/React-Stateless"
+    "url": "https://github.com/allape/React-Stateless"
   },
   "keywords": [
     "setTimeout",
