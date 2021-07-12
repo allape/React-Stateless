@@ -1,5 +1,5 @@
 {
-  "name": "react-stateless",
+  "name": "react-use-stateless",
   "version": "0.9.0",
   "description": "use state out of box of react dependency check",
   "main": "index.ts",
