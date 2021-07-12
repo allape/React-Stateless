@@ -1,0 +1,27 @@
+{
+  "name": "react-stateless",
+  "version": "0.9.0",
+  "description": "use state out of box of react dependency check",
+  "main": "index.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "postbuild": "node postbuild.js"
+  },
+  "repository": {
+    "url": "https://github.com/ALLAPE/React-Stateless"
+  },
+  "keywords": [
+    "setTimeout",
+    "timer",
+    "stateless",
+    "react"
+  ],
+  "author": "ALLAPE",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "react": "^16.10.2",
+    "@types/react": "^16.10.2",
+    "typescript": "^4.3.4"
+  }
+}
