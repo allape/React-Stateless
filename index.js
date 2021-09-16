@@ -103,4 +103,25 @@ export function useTimer(withAutoResourceManagement) {
     }, [withAutoResourceManagement, finishFunc]);
     return [done, setTimeoutFunc, finishFunc];
 }
+export function useStateProxy(defaultValue) {
+    if (typeof defaultValue === 'function') {
+        console.warn('useStateProxy may produce an error when value is a function, use useCallback instead.');
+    }
+    var _a = useState(defaultValue), state = _a[0], setState = _a[1];
+    var stateProxy = useStateless(state)[0];
+    var setStateProxy = useCallback(function (value) {
+        if (typeof value === 'function') {
+            setState(function (old) {
+                var newValue = value(old);
+                stateProxy.value = newValue;
+                return newValue;
+            });
+        }
+        else {
+            stateProxy.value = value;
+            setState(value);
+        }
+    }, [stateProxy]);
+    return [state, setState, stateProxy, setStateProxy];
+}
 // endregion

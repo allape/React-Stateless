@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 export interface StatelessWrapper<T> {
     value: T;
     lastModifiedTime: number;
@@ -41,3 +42,7 @@ export declare type UseTimerReturn = [IsStartedFunc, SetTimerFunc, FinishFunc];
  * @param withAutoResourceManagement 是否自动关闭计时器
  */
 export declare function useTimer(withAutoResourceManagement?: boolean): UseTimerReturn;
+export declare type SetState<T> = Dispatch<SetStateAction<T>>;
+export declare type SetStateProxy<T> = SetState<T>;
+export declare type UseStateProxyReturn<T> = [T, SetState<T>, StatelessWrapper<T>, SetStateProxy<T>];
+export declare function useStateProxy<T>(defaultValue?: T): UseStateProxyReturn<T>;

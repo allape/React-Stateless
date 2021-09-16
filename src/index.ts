@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {Dispatch, SetStateAction, useCallback, useEffect, useState} from 'react'
 
 // region useStateless
 
@@ -132,4 +132,30 @@ export function useTimer(withAutoResourceManagement: boolean = true): UseTimerRe
   return [done, setTimeoutFunc, finishFunc];
 }
 
+// endregion
+
+// region useStateProxy
+export type SetState<T> = Dispatch<SetStateAction<T>>
+export type SetStateProxy<T> = SetState<T>
+export type UseStateProxyReturn<T> = [T, SetState<T>, StatelessWrapper<T>, SetStateProxy<T>]
+export function useStateProxy<T>(defaultValue?: T): UseStateProxyReturn<T> {
+  if (typeof defaultValue === 'function') {
+    console.warn('useStateProxy may produce an error when value is a function, use useCallback instead.')
+  }
+  const [state, setState] = useState<T>(defaultValue as unknown as any)
+  const [stateProxy] = useStateless<T>(state)
+  const setStateProxy = useCallback<SetStateProxy<T>>((value: T | ((old: T) => T)) => {
+    if (typeof value === 'function') {
+      setState(old => {
+        const newValue = (value as Function)(old)
+        stateProxy.value = newValue
+        return newValue
+      })
+    } else {
+      stateProxy.value = value
+      setState(value)
+    }
+  }, [stateProxy])
+  return [state, setState, stateProxy, setStateProxy]
+}
 // endregion

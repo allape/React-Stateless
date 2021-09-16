@@ -1,6 +1,6 @@
 {
   "name": "react-use-stateless",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "use state out of box of react dependency check",
   "main": "index.ts",
   "scripts": {
