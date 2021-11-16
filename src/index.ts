@@ -26,7 +26,7 @@ export default function useStateless<T>(defaultValue?: T): UseStatelessReturn<T>
       ...old,
       lastModifiedTime: Date.now(),
     }));
-  }, [setStateless]);
+  }, []);
 
   return [stateless, triggerChange];
 }
@@ -117,8 +117,8 @@ export function useTimer(withAutoResourceManagement: boolean = true): UseTimerRe
   }, [done, doOnce, reset, timeoutId]);
 
   const finishFunc = useCallback(() => {
-    reset();
     clearTimeout(timeoutId.value);
+    reset();
   }, [reset, timeoutId]);
 
   useEffect(() => {

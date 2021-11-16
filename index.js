@@ -36,7 +36,7 @@ export default function useStateless(defaultValue) {
     }), stateless = _a[0], setStateless = _a[1];
     var triggerChange = useCallback(function () {
         setStateless(function (old) { return (__assign(__assign({}, old), { lastModifiedTime: Date.now() })); });
-    }, [setStateless]);
+    }, []);
     return [stateless, triggerChange];
 }
 // endregion
@@ -91,8 +91,8 @@ export function useTimer(withAutoResourceManagement) {
         return timeoutId.value;
     }, [done, doOnce, reset, timeoutId]);
     var finishFunc = useCallback(function () {
-        reset();
         clearTimeout(timeoutId.value);
+        reset();
     }, [reset, timeoutId]);
     useEffect(function () {
         return function () {
