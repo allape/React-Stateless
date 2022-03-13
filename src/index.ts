@@ -137,7 +137,7 @@ export function useTimer(withAutoResourceManagement: boolean = true): UseTimerRe
 // region useStateProxy
 export type SetState<T> = Dispatch<SetStateAction<T>>
 export type SetStateProxy<T> = SetState<T>
-export type UseStateProxyReturn<T> = [T, SetState<T>, StatelessWrapper<T>, SetStateProxy<T>]
+export type UseStateProxyReturn<T> = [T, StatelessWrapper<T>, SetStateProxy<T>]
 export function useStateProxy<T>(defaultValue?: T): UseStateProxyReturn<T> {
   if (typeof defaultValue === 'function') {
     console.warn('useStateProxy may produce an error when value is a function, use useCallback instead.')
@@ -156,6 +156,6 @@ export function useStateProxy<T>(defaultValue?: T): UseStateProxyReturn<T> {
       setState(value)
     }
   }, [stateProxy])
-  return [state, setState, stateProxy, setStateProxy]
+  return [state, stateProxy, setStateProxy]
 }
 // endregion

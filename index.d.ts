@@ -44,5 +44,5 @@ export declare type UseTimerReturn = [IsStartedFunc, SetTimerFunc, FinishFunc];
 export declare function useTimer(withAutoResourceManagement?: boolean): UseTimerReturn;
 export declare type SetState<T> = Dispatch<SetStateAction<T>>;
 export declare type SetStateProxy<T> = SetState<T>;
-export declare type UseStateProxyReturn<T> = [T, SetState<T>, StatelessWrapper<T>, SetStateProxy<T>];
+export declare type UseStateProxyReturn<T> = [T, StatelessWrapper<T>, SetStateProxy<T>];
 export declare function useStateProxy<T>(defaultValue?: T): UseStateProxyReturn<T>;

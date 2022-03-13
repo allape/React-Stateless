@@ -1,11 +1,13 @@
 {
   "name": "react-use-stateless",
-  "version": "0.9.1",
+  "version": "0.9.3",
   "description": "use state out of box of react dependency check",
   "main": "index.ts",
   "scripts": {
     "build": "npx tsc",
-    "postbuild": "node postbuild.js"
+    "postbuild": "node postbuild.js",
+    "prepublish": "npm run build",
+    "publish": "npm publish"
   },
   "repository": {
     "url": "https://github.com/allape/React-Stateless"

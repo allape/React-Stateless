@@ -122,6 +122,6 @@ export function useStateProxy(defaultValue) {
             setState(value);
         }
     }, [stateProxy]);
-    return [state, setState, stateProxy, setStateProxy];
+    return [state, stateProxy, setStateProxy];
 }
 // endregion
